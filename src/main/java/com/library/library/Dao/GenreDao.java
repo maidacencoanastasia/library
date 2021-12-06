@@ -1,4 +1,7 @@
 package com.library.library.Dao;
 
-public interface GenreDao {
+import com.library.library.domain.Genre;
+
+public interface GenreDao extends GeneralDAO<Genre>{
+
 }
