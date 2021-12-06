@@ -8,10 +8,15 @@ plugins {
 group = 'com.library'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+ext['hibernate.version'] = '5.1.3.Final'
 
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
+
+	}
+	compile{
+		compile.exclude module: 'spring-boot-starter-tomcat'// исключаем Tomcat, т.к. мы используем GlassFish
 	}
 }
 
@@ -30,6 +35,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	compile('org.primefaces.themes:bootstrap:1.0.10')
 }
 
 test {
