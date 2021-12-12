@@ -1,6 +1,8 @@
 package com.library.library.spring.repository;
 
 import com.library.library.domain.Author;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +13,8 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {// JpaRep
 
     // на основании имени метода будет построен Hibernate запрос
     List<Author> findByFioContainingIgnoreCaseOrderByFio(String fio);
+
+    // Page cодержит результаты выполнения запроса и служебные данные для постраничности
+    Page<Author> findByFioContainingIgnoreCaseOrderByFio(String fio, Pageable pageable);// Pageable - параметры для постраничности
 
 }
